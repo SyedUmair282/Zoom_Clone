@@ -14,8 +14,8 @@ const Sidebar = () => {
     max-sm:hidden lg:w-[246px]"
     >
       <div className="flex flex-1 flex-col gap-6">
-        {sidebarLinks.map((link)=>{
-          const isActive = pathname === link.route || pathname.startsWith(link.route);
+        {sidebarLinks.map((link)=>{          
+          const isActive = pathname === link.route || pathname.startsWith(`${link.route}/`);
           return(
             <Link 
               href={link.route}
