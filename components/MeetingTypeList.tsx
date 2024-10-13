@@ -2,10 +2,14 @@
 import React, { useState } from 'react'
 import HomeCard from './HomeCard';
 import { useRouter } from 'next/navigation';
+import MeetingModal from './MeetingModal';
 
 const MeetingTypeList = () => {
     const [meetingState, setMeetingState] = useState<"isScheduleMeeting" | "isInstantMeeting" | "isJoiningMeeting" | undefined>()
     const router = useRouter();
+    const createMeeting = () => {
+        alert("chcl")
+    }
   return (
     <section className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4'>
         <HomeCard
@@ -35,6 +39,14 @@ const MeetingTypeList = () => {
             description="Via invitation link"
             handleClick={()=> setMeetingState("isJoiningMeeting")}
             className="bg-yellow-1"
+        />
+        <MeetingModal
+            isOpen={meetingState === "isInstantMeeting"}
+            onClose={()=> setMeetingState(undefined)}
+            title="Start an Instant Meeting"
+            className="text-center text-white"
+            buttonText="Start Meeting"
+            handleClick={createMeeting}
         />
     </section>
   )
